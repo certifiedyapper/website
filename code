@@ -1,0 +1,62 @@
+from flask import Flask
+import random
+app = Flask(__name__)
+
+
+@app.route("/")                                    #http://127.0.0.1:5000
+
+def index():                                      
+    return "<h1>main page</h1>" "<a>/http://127.0.0.1:5000/abtus" "<a>/http://127.0.0.1:5000/links" "<a>/http://127.0.0.1:5000/abtstick" "<a>/http://127.0.0.1:5000/gamesstickplayz"
+def abtstick():
+    "can't say without permission srry"
+
+@app.route("/abtus")                                    #http://127.0.0.1:5000/abtus
+def abtus():
+    return "<h1>about us</h1>"
+
+@app.route("/links")                                    #http://127.0.0.1:5000/links
+def links():
+    return "<h1>links</h1>"
+
+@app.route("/abtstick")                                    #http://127.0.0.1:5000/abtstick
+def abtstick():
+    return "<h1>about stick</h1>"
+
+@app.route("/news<int:number>")                           #http://127.0.0.1:5000/news1
+
+def news(number):
+    return f"<h1>news channel {number}<h1>"
+
+@app.route("/plus/<int:num1>/<num2>")
+def plus(num1, num2):
+    return f"<h1>{num1}+{num2}={num1 + num2}<h1>"
+
+
+
+
+
+@app.route("/hi<int:number>")
+def hi(number):
+    news_dict = {
+        1:"hi",
+        2:"hello",
+    }
+    if number not in news_dict:
+        return "<h1>non existant enter a valid number or you'll get this again<h1>"
+    
+    return f"<h1>{number}<h1>"
+
+
+
+
+
+@app.route("/gamesstickplayz")         
+                     #http://127.0.0.1:5000/gamesstickplayz
+def games():
+    x = [
+        "r2d2","standbox","r6","fort","bodycam","roblox"
+    ]
+    return f"<h1>random game that stick playz: {random.choice(x)}<h1>"
+
+if __name__ == "__main__":
+    app.run(debug=True)
